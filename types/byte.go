@@ -1,7 +1,9 @@
 package types
 
-import "fmt"
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
 func Byte_8() {
 	var a byte = 65
@@ -26,5 +28,15 @@ func Write_file_using_byte() {
 		return
 	}
 	fmt.Println("successufly write")
+}
+
+func Read_file_into_byte() {
+	data, err := os.ReadFile("./types/file")
+	if err != nil {
+		fmt.Println("error in writing file : ", err)
+		return
+	}
+	fmt.Println(data)
+	fmt.Println(string(data))
 
 }
