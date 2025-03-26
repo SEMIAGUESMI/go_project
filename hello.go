@@ -8,5 +8,6 @@ import "rsc.io/quote"
 
 func main() {
 	fmt.Println(quote.Go())
-	types.Test_Rune()
+	types.Types_declaration()
+
 }
