@@ -1,6 +1,7 @@
 package types
 
 import "fmt"
+import "os"
 
 func Byte_8() {
 	var a byte = 65
@@ -14,5 +15,16 @@ func Byte_string() {
 	byte_str[4] = 'M'
 	fmt.Println(byte_str)
 	fmt.Println(string(byte_str))
+
+}
+func Write_file_using_byte() {
+	data := "ameni is learning golang"
+	dat_to_byte := []byte(data)
+	err := os.WriteFile("file", dat_to_byte, 0644)
+	if err != nil {
+		fmt.Println("error in writing file", err)
+		return
+	}
+	fmt.Println("successufly write")
 
 }
