@@ -22,7 +22,7 @@ func Byte_string() {
 func Write_file_using_byte() {
 	data := "ameni is learning golang"
 	dat_to_byte := []byte(data)
-	err := os.WriteFile("file", dat_to_byte, 0644)
+	err := os.WriteFile("./types/file.txt", dat_to_byte, 0634)
 	if err != nil {
 		fmt.Println("error in writing file", err)
 		return
@@ -39,4 +39,21 @@ func Read_file_into_byte() {
 	fmt.Println(data)
 	fmt.Println(string(data))
 
+}
+func Add_new_data_to_file() {
+	file, err := os.OpenFile("./types/file.txt", os.O_APPEND|os.O_WRONLY, 6453)
+	if err != nil {
+		fmt.Println("error in reading file : ", err)
+		return
+	}
+	defer file.Close() // Ensure the file is closed after writing
+
+	newdata := []byte(" and she is going on quiqly !")
+
+	_, err = file.Write(newdata)
+	if err != nil {
+		fmt.Println("error in writing file : ", err)
+		return
+	}
+	fmt.Println("Data appended successfully!")
 }

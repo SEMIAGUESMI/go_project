@@ -8,5 +8,5 @@ import "rsc.io/quote"
 
 func main() {
 	fmt.Println(quote.Go())
-	types.Read_file_into_byte()
+	types.Add_new_data_to_file()
 }
