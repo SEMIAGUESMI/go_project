@@ -56,4 +56,5 @@ func Add_new_data_to_file() {
 		return
 	}
 	fmt.Println("Data appended successfully!")
+
 }
