@@ -18,7 +18,11 @@ func Types_declaration() {
 	she := 2.4
 	fmt.Printf("the typle of the varibale is %T\n", she)
 
-	var1, var2 := 0.009, "ameni is bored"
+	var1, var2 := 7.009, "ameni is bored"
 	fmt.Println(var1, "\n", var2)
+
+	fmt.Println(int(var1))
+
+	const const_ = "nshssn"
 
 }
