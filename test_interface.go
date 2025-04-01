@@ -1,5 +1,5 @@
 package main
-
+/*
 import (
 	"LEARN_GO/types"
 	"fmt"
@@ -19,3 +19,4 @@ func main() {
 	}
 	fmt.Println(types.Test_switch(sms))
 }
+*/
