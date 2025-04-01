@@ -75,3 +75,46 @@ func (appl Hp) getinfo() (string, int) {
 func Test_computer(computer Computer) {
 	computer.getinfo()
 }
+
+type message interface {
+	get_sender() string
+}
+type Email struct {
+	Sender_address  string
+	Receipt_address string
+}
+type Sms struct {
+	Sender_number  string
+	Receipt_number string
+}
+
+func (e Email) get_sender() string {
+	return e.Sender_address
+}
+func (s Sms) get_sender() string {
+	return s.Sender_number
+}
+
+func Test_message(m message) string {
+	em, ok := m.(Email)
+	if ok {
+		return em.get_sender()
+	}
+	c, ok := m.(Sms)
+	if ok {
+		return c.get_sender()
+	}
+	return ""
+
+}
+func Test_switch(m message) string {
+	switch v := m.(type) {
+	case Email:
+		return v.get_sender()
+	case Sms:
+		return v.get_sender()
+	default:
+		return ""
+	}
+
+}

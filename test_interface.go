@@ -1,6 +1,9 @@
 package main
 
-import "LEARN_GO/types"
+import (
+	"LEARN_GO/types"
+	"fmt"
+)
 
 func main() {
 	types.Test(types.BirthdayMessage{
@@ -10,4 +13,9 @@ func main() {
 
 	types.Test_computer(types.Apple{Name: "apple", Storage: 64})
 
+	sms := types.Sms{
+		Sender_number:  "+393513116571",
+		Receipt_number: "+393513116571",
+	}
+	fmt.Println(types.Test_switch(sms))
 }
