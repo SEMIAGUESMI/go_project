@@ -2,7 +2,7 @@ package types
 
 import "fmt"
 
-func Condistional(a int) {
+func Conditional(a int) {
 	if a == 0 {
 		a++
 	} else if a > 0 {
@@ -31,4 +31,10 @@ func increment(initial_age int, years int) int {
 }
 func Name() (string, string) {
 	return "semia", "guesmi"
+}
+func NAKED_Return() (x, y int, name string) {
+	x = 1
+	y = 2
+	name = "ameni"
+	return
 }
