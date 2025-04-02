@@ -1,5 +1,4 @@
 package main
-
 /*
 import "errors"
 import "fmt"
@@ -27,6 +26,19 @@ func main() {
 	}
 	fmt.Println(item)
 
+	
+// custum error
+type myerror struct {
+	code    int
+	message string
+}
+
+func (e *myerror) Error() string {
+	return fmt.Sprintf("Error %d: %s", e.code, e.message)
+}
+
+func riskymessage() error {
+	return &myerror{code: 404, message: "source not found"}
 }
 func devide(a float32, b float32) (float32, error) {
 	if b == 0 {
@@ -39,6 +51,7 @@ func findUser(username string) (string, error) {
 		return "", fmt.Errorf("user %s not found", username)
 	}
 	return "admin", nil
+
 }
 
 var ErrorNotFound = errors.New("item not found")
