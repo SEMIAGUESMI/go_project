@@ -5,7 +5,7 @@ import (
 	"LEARN_GO/types"
 	"fmt"
 )
-
+/*
 func main() {
 	types.Test(types.BirthdayMessage{
 		Name: "ameni",

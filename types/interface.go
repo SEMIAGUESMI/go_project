@@ -1,8 +1,11 @@
 package types
 
-import "math"
+import (
+	"errors"
+	"fmt"
+	"math"
+)
 
-// create method for struct
 type shape interface {
 	Area()
 	Perimeter()
@@ -16,6 +19,7 @@ type cercle struct {
 }
 
 func (r Rectangle) Area() float32 {
+
 	return r.Lenght * r.Width
 }
 func (r Rectangle) Perimeter() float32 {
@@ -72,49 +76,96 @@ func (appl Apple) getinfo() (string, int) {
 func (appl Hp) getinfo() (string, int) {
 	return appl.Name, appl.Storage
 }
-func Test_computer(computer Computer) {
+func TestComputer(computer Computer) {
 	computer.getinfo()
 }
 
 type message interface {
-	get_sender() string
+	getSender() string
 }
 type Email struct {
-	Sender_address  string
-	Receipt_address string
+	SenderAddress  string
+	ReceiptAddress string
 }
 type Sms struct {
-	Sender_number  string
-	Receipt_number string
+	SenderNumber  string
+	ReceiptNumber string
 }
 
-func (e Email) get_sender() string {
-	return e.Sender_address
+func (e Email) getSender() string {
+	return e.SenderAddress
 }
-func (s Sms) get_sender() string {
-	return s.Sender_number
+
+func (s Sms) getSender() string {
+	return s.SenderNumber
 }
 
 func Test_message(m message) string {
 	em, ok := m.(Email)
 	if ok {
-		return em.get_sender()
+		return em.getSender()
 	}
 	c, ok := m.(Sms)
 	if ok {
-		return c.get_sender()
+		return c.getSender()
 	}
 	return ""
 
 }
-func Test_switch(m message) string {
+func TestSwitch(m message) string {
 	switch v := m.(type) {
 	case Email:
-		return v.get_sender()
+		return v.getSender()
 	case Sms:
-		return v.get_sender()
+		return v.getSender()
 	default:
 		return ""
 	}
 
+}
+
+// empty interface
+var I interface{} = "hello world"
+
+func EmptyiInterface() {
+	s, ok := I.(int)
+	fmt.Println(ok)
+	if ok {
+		fmt.Println(s)
+	}
+}
+
+func SwitchInterface(i interface{}) error {
+	switch v := i.(type) {
+	case int:
+		fmt.Println("Integer", v)
+	case string:
+		fmt.Println("string", v)
+	case bool:
+		fmt.Println("bool", v)
+	default:
+		return errors.New("type not available")
+	}
+	return nil
+}
+
+func InterfaceMain() {
+	address := Address{City: "Milan", Country: "Italy", Street: "via poscolle"}
+	user := User{FirstName: "ameni", LastName: "guesmi", Address: address}
+
+	obj := Mystruct{}
+	fmt.Println(obj)
+
+	obj.SetOwner(user)
+	fmt.Println(obj)
+
+	fmt.Println(I)
+	EmptyiInterface()
+
+	var k interface{} = 2222.0
+	k = "ekdjwjdew"
+	err := SwitchInterface(k)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
